@@ -14,17 +14,26 @@ class ColorPicker extends Component {
             height: 50,
             marginRight: 10
         }
+    }
+    setActiveColor(color){
+      this.props.onReciveColor(color);
     }   
     
     render() {
         var eleColor = this.state.color.map((color,index) => {
             return (
-                <button className="card-text" key={index} style={this.showColor(color)}></button>
+                <button className="card-text" 
+                    key={index} 
+                    style={this.showColor(color)}
+                    className={this.props.color === color ? 'active' : ''}
+                    onClick={() => this.setActiveColor(color)}
+                >
+                </button>
             )
         })
         return (
             <div className="col-sm-6">
-                <div className="card">
+                <div className="card mt-3">
                     <div className="card-header">
                         Color Picker
                     </div>
